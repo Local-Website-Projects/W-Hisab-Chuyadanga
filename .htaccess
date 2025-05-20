@@ -1,0 +1,35 @@
+RewriteEngine On
+
+# Redirect contact to contact.php
+RewriteRule ^Login$ index.php [L]
+RewriteRule ^Signup$ signup.php [L]
+RewriteRule ^Logout$ logout.php [L]
+RewriteRule ^Verify$ email_verification.php [L]
+RewriteRule ^Dashboard$ dashboard.php [L]
+RewriteRule ^Forget-Password$ forgetPassword.php [L]
+RewriteRule ^Set-Password$ setPassword.php [L]
+RewriteRule ^Update-Password$ updatePassword.php [L]
+RewriteRule ^Categories$ categories.php [L]
+RewriteRule ^Expenses$ expenses.php [L]
+
+RewriteRule ^Update$ update.php [L]
+RewriteRule ^Insert$ insert.php [L]
+RewriteRule ^Delete$ delete.php [L]
+
+
+# Remove "index.php" from URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Custom 404 error page
+ErrorDocument 404 /404.php
+
+# Deny access to .htaccess itself
+<Files ".htaccess">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Prevent directory listing
+Options -Indexes
