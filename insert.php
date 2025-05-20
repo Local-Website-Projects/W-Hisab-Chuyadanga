@@ -20,7 +20,7 @@ if(isset($_POST['add_expense'])){
     $phone = $db_handle->checkValue($_POST['phone']);
     $amount = $db_handle->checkValue($_POST['amount']);
 
-    $insert_expense = $db_handle->insertQuery("");
+    $insert_expense = $db_handle->insertQuery("INSERT INTO `expenses`(`name`, `phone`, `address`, `cat_id`, `amount`, `inserted_at`) VALUES ('$name','$phone','$address','$cat_id','$amount','$inserted_at')");
 
     if($insert_expense){
         $_SESSION['status'] = 'Success';
